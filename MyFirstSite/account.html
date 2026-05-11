@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Личный кабинет</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .account-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .account-header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .account-container {
+            max-width: 1232px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .account-hero {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+
+        .account-hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: #2c1a24;
+            margin-bottom: 8px;
+        }
+
+        .account-hero p {
+            font-size: 16px;
+            color: #5e4a54;
+        }
+
+        .account-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 20px 0 80px;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            height: fit-content;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .user-avatar {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .avatar-icon {
+            font-size: 80px;
+        }
+
+        .user-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c1a24;
+            margin-top: 8px;
+        }
+
+        .user-email {
+            font-size: 14px;
+            color: #7a6672;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 12px 16px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #5e4a54;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: #f9eef3;
+            color: #a44c78;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid #debacc;
+            border-radius: 40px;
+            color: #a44c78;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #f9eef3;
+            border-color: #a44c78;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c1a24;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #f0e1e8;
+            padding-bottom: 12px;
+        }
+
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c1a24;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e0d0d8;
+            border-radius: 16px;
+            font-family: inherit;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: #a44c78;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #f0e1e8;
+        }
+
+        .orders-table th {
+            color: #a44c78;
+            font-weight: 600;
+        }
+
+        .status-paid {
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 40px;
+            color: #7a6672;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #a44c78;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+        }
+
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .account-content {
+                grid-template-columns: 1fr;
+            }
+            .account-hero h1 {
+                font-size: 32px;
+            }
+            .orders-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="account-page">
+
+    <div class="account-header">
+        <div class="account-container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+                </a>
+                <div style="display: flex; align-items: center; gap: 24px;">
+                    <a href="index.html" class="back-link">← На главную</a>
+                    <a href="cart.html" class="cart-icon">
+                        🛒
+                        <span id="cartCount" class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-container">
+        <div class="account-hero">
+            <h1>👤 Личный кабинет</h1>
+            <p>Управляйте заказами, просматривайте историю и настройки</p>
+        </div>
+
+        <div class="account-content" id="accountContent">
+        </div>
+    </div>
+
+    <script>
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+
+        // Обновляет email в заказах, сделанных до регистрации/входа
+        function updateOrdersEmail(userEmail) {
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            let updated = false;
+            
+            orders = orders.map(order => {
+                if (order.userEmail === 'client@example.com' || order.userEmail === 'guest@example.com') {
+                    updated = true;
+                    return { ...order, userEmail: userEmail };
+                }
+                return order;
+            });
+            
+            if (updated) {
+                localStorage.setItem('orders', JSON.stringify(orders));
+                console.log('✅ Заказы обновлены для пользователя:', userEmail);
+            }
+        }
+
+        function login(email, password) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                // Обновляем старые заказы (если были с email по умолчанию)
+                updateOrdersEmail(email);
+                
+                renderAccount();
+                return true;
+            }
+            return false;
+        }
+
+        function register(name, email, phone, password) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.find(u => u.email === email)) {
+                return false;
+            }
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                phone: phone,
+                password: password,
+                createdAt: new Date().toLocaleString()
+            };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // Обновляем старые заказы (если были с email по умолчанию)
+            updateOrdersEmail(email);
+            
+            return true;
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            renderAccount();
+        }
+
+        function getUserOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            if (!currentUser) return [];
+            return orders.filter(order => order.userEmail === currentUser.email);
+        }
+
+        function renderAuth() {
+            return `
+                <div class="main-content" style="grid-column: 1/-1;">
+                    <div class="auth-form">
+                        <div id="authTabs" style="display: flex; gap: 16px; margin-bottom: 32px; border-bottom: 2px solid #f0e1e8;">
+                            <button id="loginTab" style="background: none; border: none; padding: 12px 24px; font-size: 18px; font-weight: 600; cursor: pointer; color: #a44c78; border-bottom: 2px solid #a44c78;">Вход</button>
+                            <button id="registerTab" style="background: none; border: none; padding: 12px 24px; font-size: 18px; font-weight: 600; cursor: pointer; color: #7a6672;">Регистрация</button>
+                        </div>
+                        
+                        <div id="loginForm">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="loginEmail" placeholder="example@mail.ru">
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" id="loginPassword" placeholder="••••••">
+                            </div>
+                            <button class="auth-btn" onclick="handleLogin()">Войти</button>
+                        </div>
+                        
+                        <div id="registerForm" style="display: none;">
+                            <div class="form-group">
+                                <label>Имя</label>
+                                <input type="text" id="regName" placeholder="Иван">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="regEmail" placeholder="example@mail.ru">
+                            </div>
+                            <div class="form-group">
+                                <label>Телефон</label>
+                                <input type="tel" id="regPhone" placeholder="+7 999 123-45-67">
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" id="regPassword" placeholder="••••••">
+                            </div>
+                            <button class="auth-btn" onclick="handleRegister()">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProfile() {
+            if (!currentUser) return '';
+            
+            const orders = getUserOrders();
+            
+            let ordersHtml = '';
+            if (orders.length === 0) {
+                ordersHtml = '<div class="empty-orders">😢 У вас пока нет заказов. Перейдите в <a href="catalog.html" style="color: #a44c78;">каталог</a>, чтобы сделать первый заказ!</div>';
+            } else {
+                ordersHtml = `
+                    <table class="orders-table">
+                        <thead>
+                            <tr><th>Дата</th><th>Заказ</th><th>Сумма</th><th>Статус</th></tr>
+                        </thead>
+                        <tbody>
+                            ${orders.map(order => `
+                                <tr>
+                                    <td>${order.date}</td>
+                                    <td>${order.items.join(', ')}</td>
+                                    <td>${order.total.toLocaleString()} ₽</td>
+                                    <td><span class="${order.status === 'delivered' ? 'status-paid' : 'status-pending'}">${order.status === 'delivered' ? 'Доставлен' : 'В обработке'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+            
+            return `
+                <div class="sidebar">
+                    <div class="user-avatar">
+                        <div class="avatar-icon">👤</div>
+                        <div class="user-name">${currentUser.name}</div>
+                        <div class="user-email">${currentUser.email}</div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active" onclick="renderProfileView(); return false;">📋 Мои заказы</a></li>
+                        <li><a href="#" onclick="renderSettingsView(); return false;">⚙️ Настройки</a></li>
+                    </ul>
+                    <button class="logout-btn" onclick="logout()">🚪 Выйти</button>
+                </div>
+                <div class="main-content" id="profileMainContent">
+                    <h2 class="section-title">📋 История заказов</h2>
+                    ${ordersHtml}
+                </div>
+            `;
+        }
+
+        window.renderProfileView = function() {
+            const orders = getUserOrders();
+            let ordersHtml = '';
+            if (orders.length === 0) {
+                ordersHtml = '<div class="empty-orders">😢 У вас пока нет заказов. Перейдите в <a href="catalog.html" style="color: #a44c78;">каталог</a>, чтобы сделать первый заказ!</div>';
+            } else {
+                ordersHtml = `
+                    <table class="orders-table">
+                        <thead><tr><th>Дата</th><th>Заказ</th><th>Сумма</th><th>Статус</th></tr></thead>
+                        <tbody>
+                            ${orders.map(order => `
+                                <tr>
+                                    <td>${order.date}</td>
+                                    <td>${order.items.join(', ')}</td>
+                                    <td>${order.total.toLocaleString()} ₽</td>
+                                    <td><span class="${order.status === 'delivered' ? 'status-paid' : 'status-pending'}">${order.status === 'delivered' ? 'Доставлен' : 'В обработке'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+            const profileMainContent = document.getElementById('profileMainContent');
+            if (profileMainContent) {
+                profileMainContent.innerHTML = `
+                    <h2 class="section-title">📋 История заказов</h2>
+                    ${ordersHtml}
+                `;
+            }
+        };
+
+        window.renderSettingsView = function() {
+            const profileMainContent = document.getElementById('profileMainContent');
+            if (profileMainContent) {
+                profileMainContent.innerHTML = `
+                    <h2 class="section-title">⚙️ Настройки профиля</h2>
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" id="editName" value="${currentUser.name}" style="width: 100%; max-width: 300px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" id="editPhone" value="${currentUser.phone || ''}" style="width: 100%; max-width: 300px;">
+                    </div>
+                    <button class="auth-btn" onclick="saveSettings()" style="max-width: 300px;">💾 Сохранить изменения</button>
+                `;
+            }
+        };
+
+        window.saveSettings = function() {
+            const newName = document.getElementById('editName').value;
+            const newPhone = document.getElementById('editPhone').value;
+            
+            if (newName) {
+                currentUser.name = newName;
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.email === currentUser.email);
+                if (userIndex !== -1) {
+                    users[userIndex].name = newName;
+                    users[userIndex].phone = newPhone;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                alert('✅ Данные сохранены!');
+                renderAccount();
+            }
+        };
+
+        window.handleLogin = function() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if (login(email, password)) {
+                renderAccount();
+            } else {
+                alert('Неверный email или пароль!');
+            }
+        };
+
+        window.handleRegister = function() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const phone = document.getElementById('regPhone').value;
+            const password = document.getElementById('regPassword').value;
+            if (!name || !email || !phone || !password) {
+                alert('Заполните все поля!');
+                return;
+            }
+            if (register(name, email, phone, password)) {
+                renderAccount();
+            } else {
+                alert('Пользователь с таким email уже существует!');
+            }
+        };
+
+        function setupAuthTabs() {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            
+            if (loginTab && registerTab) {
+                loginTab.onclick = () => {
+                    loginTab.style.color = '#a44c78';
+                    loginTab.style.borderBottom = '2px solid #a44c78';
+                    registerTab.style.color = '#7a6672';
+                    registerTab.style.borderBottom = 'none';
+                    loginForm.style.display = 'block';
+                    registerForm.style.display = 'none';
+                };
+                registerTab.onclick = () => {
+                    registerTab.style.color = '#a44c78';
+                    registerTab.style.borderBottom = '2px solid #a44c78';
+                    loginTab.style.color = '#7a6672';
+                    loginTab.style.borderBottom = 'none';
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                };
+            }
+        }
+
+        function renderAccount() {
+            const container = document.getElementById('accountContent');
+            if (!currentUser) {
+                container.innerHTML = renderAuth();
+                setupAuthTabs();
+            } else {
+                container.innerHTML = renderProfile();
+            }
+        }
+
+        renderAccount();
+    </script>
+</body>
+</html>

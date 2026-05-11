@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora — FAQ</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .info-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        .info-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .info-header {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .info-title {
+            text-align: center;
+            font-size: 48px;
+            color: #2c1a24;
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .faq-question {
+            font-size: 20px;
+            font-weight: 700;
+            color: #a44c78;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            color: #5e4a54;
+            line-height: 1.6;
+            margin-top: 15px;
+            display: none;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .faq-icon {
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #a44c78;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+            margin-left: 20px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-actions {
+            display: flex;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .info-title { font-size: 32px; }
+            .faq-question { font-size: 16px; }
+            .info-header {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="info-page">
+    <div class="info-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+        </a>
+        <div class="right-actions">
+            <a href="index.html" class="back-link">← На главную</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+    <div class="info-container">
+        <h1 class="info-title">❓ Часто задаваемые вопросы</h1>
+        
+        <div class="faq-item" onclick="this.classList.toggle('open'); this.querySelector('.faq-answer').classList.toggle('show')">
+            <div class="faq-question">
+                <span>🌹 Как долго стоят цветы?</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">При правильном уходе — от 7 до 14 дней. Свежие букеты стоят дольше!</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open'); this.querySelector('.faq-answer').classList.toggle('show')">
+            <div class="faq-question">
+                <span>🚚 Есть ли бесплатная доставка?</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">Да! При заказе от 4000 ₽ доставка по городу бесплатная.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open'); this.querySelector('.faq-answer').classList.toggle('show')">
+            <div class="faq-question">
+                <span>💳 Какие способы оплаты?</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">Картой онлайн, СБП, наличными курьеру, по QR-коду.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open'); this.querySelector('.faq-answer').classList.toggle('show')">
+            <div class="faq-question">
+                <span>⏱️ Как быстро можно получить заказ?</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">Экспресс-доставка за 2 часа по городу. Стандартная — на следующий день.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open'); this.querySelector('.faq-answer').classList.toggle('show')">
+            <div class="faq-question">
+                <span>🔄 Можно ли вернуть букет?</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">Да, если цветы завяли раньше 7 дней — вернём деньги или заменим букет.</div>
+        </div>
+    </div>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

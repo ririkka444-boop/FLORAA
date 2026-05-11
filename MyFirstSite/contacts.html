@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Контакты</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contacts-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .contacts-header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .contacts-container {
+            max-width: 1232px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contacts-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .contacts-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2c1a24;
+            margin-bottom: 16px;
+        }
+
+        .contacts-hero p {
+            font-size: 18px;
+            color: #5e4a54;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(164, 76, 120, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        .contact-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #a44c78;
+            margin-bottom: 12px;
+        }
+
+        .contact-value {
+            font-size: 18px;
+            color: #2c1a24;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-value:hover {
+            color: #a44c78;
+        }
+
+        .contact-desc {
+            font-size: 14px;
+            color: #7a6672;
+            margin-top: 8px;
+        }
+
+        .map-section {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            margin: 20px 0 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .map-section h2 {
+            font-size: 28px;
+            color: #2c1a24;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #f9eef3, #f3e0e8);
+            border-radius: 24px;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .map-placeholder p {
+            font-size: 18px;
+            color: #a44c78;
+            margin-bottom: 10px;
+        }
+
+        .map-placeholder small {
+            color: #7a6672;
+        }
+
+        .work-time-badge {
+            display: inline-block;
+            background: #f9eef3;
+            padding: 12px 24px;
+            border-radius: 40px;
+            margin-top: 20px;
+            font-weight: 500;
+            color: #a44c78;
+        }
+
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #a44c78;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .contacts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .contacts-hero h1 {
+                font-size: 32px;
+            }
+            .map-section {
+                padding: 24px;
+            }
+            .map-section h2 {
+                font-size: 24px;
+            }
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="contacts-page">
+
+    <!-- Шапка -->
+    <div class="contacts-header">
+        <div class="contacts-container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+                </a>
+                <div class="right-actions">
+                    <a href="index.html" class="back-link">← На главную</a>
+                    <a href="cart.html" class="cart-icon">
+                        🛒
+                        <span id="cartCount" class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="contacts-container">
+        <div class="contacts-hero">
+            <h1>📞 Контакты</h1>
+            <p>Свяжитесь с нами любым удобным способом</p>
+        </div>
+
+        <div class="contacts-grid">
+            <!-- Телефон -->
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div class="contact-title">Телефон</div>
+                <a href="tel:+79991234567" class="contact-value">+7 (999) 123-45-67</a>
+                <div class="contact-desc">Звонки принимаем ежедневно 9:00–21:00</div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-title">Email</div>
+                <a href="mailto:hello@flora.ru" class="contact-value">hello@flora.ru</a>
+                <div class="contact-desc">Ответим в течение часа</div>
+            </div>
+
+            <!-- Адрес -->
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <div class="contact-title">Адрес</div>
+                <div class="contact-value">Москва, ул. Цветочная, 10</div>
+                <div class="contact-desc">м. Цветочная, выход №2</div>
+            </div>
+
+            <!-- Режим работы -->
+            <div class="contact-card">
+                <div class="contact-icon">⏰</div>
+                <div class="contact-title">Режим работы</div>
+                <div class="contact-value">Ежедневно 9:00 – 21:00</div>
+                <div class="contact-desc">Без выходных</div>
+            </div>
+        </div>
+
+        <!-- Социальные сети -->
+        <div class="map-section">
+            <h2>📱 Мы в соцсетях</h2>
+            <div class="contacts-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="contact-card">
+                    <div class="contact-icon">📷</div>
+                    <div class="contact-title">Instagram</div>
+                    <a href="#" class="contact-value">@flora_shop</a>
+                    <div class="contact-desc">Следите за новинками и акциями</div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📘</div>
+                    <div class="contact-title">VK</div>
+                    <a href="#" class="contact-value">flora_shop</a>
+                    <div class="contact-desc">Присоединяйтесь к нашему сообществу</div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✈️</div>
+                    <div class="contact-title">Telegram</div>
+                    <a href="#" class="contact-value">@flora_shop</a>
+                    <div class="contact-desc">Быстрая связь с менеджером</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карта (схема проезда) -->
+        <div class="map-section">
+            <h2>📍 Как нас найти</h2>
+            <div class="map-placeholder">
+                <p>🗺️ г. Москва, ул. Цветочная, 10</p>
+                <p>🚇 м. Цветочная, выход №2, пешком 3 минуты</p>
+                <p>🚗 Парковка доступна у входа в ТЦ "Цветочный"</p>
+                <small>Мы находимся на картах: Яндекс.Карты, Google Maps, 2ГИС</small>
+                <div class="work-time-badge">✨ Работаем для вас ежедневно с 9:00 до 21:00 ✨</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Функция обновления счётчика корзины
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Свежайшие букеты</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .catalog-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .catalog-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .catalog-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2c1a24;
+            margin-bottom: 16px;
+        }
+
+        .catalog-hero p {
+            font-size: 18px;
+            color: #5e4a54;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Сортировка */
+        .sort-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0e1e8;
+        }
+
+        .sort-bar label {
+            font-weight: 500;
+            color: #2c1a24;
+        }
+
+        .sort-select {
+            padding: 8px 16px;
+            border: 1px solid #e0d0d8;
+            border-radius: 40px;
+            background: white;
+            color: #2c1a24;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sort-select:hover {
+            border-color: #a44c78;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            padding: 40px 0 80px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(164, 76, 120, 0.2);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f9eef3, #f3e0e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .img-placeholder {
+            font-size: 80px;
+            opacity: 0.5;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c1a24;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #a44c78;
+            margin: 12px 0;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #7a6672;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            background: #d99bb4;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: #a44c78;
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #a44c78;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .catalog-hero h1 {
+                font-size: 32px;
+            }
+            .product-img {
+                height: 220px;
+            }
+            .sort-bar {
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="catalog-page">
+
+    <!-- Шапка каталога с корзиной -->
+    <div class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+            </a>
+            <div class="header-actions">
+                <a href="index.html" class="back-link">← На главную</a>
+                <a href="cart.html" class="cart-btn">
+                    🛒
+                    <span id="cartCount" class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="catalog-hero">
+            <h1>🌹 Свежайшие букеты</h1>
+            <p>Цветы, срезанные утром и доставленные в день заказа. Выберите свой идеальный букет.</p>
+        </div>
+
+        <!-- Панель сортировки -->
+        <div class="sort-bar">
+            <label>Сортировать:</label>
+            <select id="sortSelect" class="sort-select">
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Сначала дешёвые</option>
+                <option value="price-desc">Сначала дорогие</option>
+                <option value="name-asc">По названию (А-Я)</option>
+            </select>
+        </div>
+
+        <!-- Сетка 3×3 с товарами -->
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <script>
+        // ========== ТОВАРЫ ==========
+        const products = [
+            { id: 1, name: "Розовое настроение", price: 2490, desc: "3 нежно-розовые розы, небесно-белые лилии и кремовые гвоздики в розовой упаковке.", img: "bouquet-1.jpg", emoji: "🌷" },
+            { id: 2, name: "Солнечный день", price: 2190, desc: "7 белоснежных фрезий + декоративная зелень.", img: "bouquet-2.jpg", emoji: "🌻" },
+            { id: 3, name: "Лавандовый сон", price: 3190, desc: "Лаванда, хлопок и полевые травы.", img: "bouquet-3.jpg", emoji: "💜" },
+            { id: 4, name: "Алая страсть", price: 3990, desc: "Алые розы, хризантемы, кустовидные розы и эвкалипт в упаковке.", img: "bouquet-4.jpg", emoji: "❤️" },
+            { id: 5, name: "Нежность пионов", price: 4490, desc: "Махровые пионы + декоративный папоротник.", img: "bouquet-5.jpg", emoji: "🌸" },
+            { id: 6, name: "Летний букет", price: 2890, desc: "Полевые цветы.", img: "bouquet-6.jpg", emoji: "🌿" },
+            { id: 7, name: "Белоснежное облако", price: 3290, desc: "Белые лилии в белоснежной упаковке.", img: "bouquet-7.jpg", emoji: "🤍" },
+            { id: 8, name: "Ромашковое поле", price: 3590, desc: "Ромашки.", img: "bouquet-8.jpg", emoji: "🍓" },
+            { id: 9, name: "Морской бриз", price: 2790, desc: "Гипсофила, хризантемы, дельфиниум", img: "bouquet-9.jpg", emoji: "💙" }
+        ];
+
+        // Текущий тип сортировки
+        let currentSort = 'default';
+
+        // Функция сортировки
+        function sortProducts(productsArray, sortType) {
+            const sorted = [...productsArray];
+            switch(sortType) {
+                case 'price-asc':
+                    return sorted.sort((a, b) => a.price - b.price);
+                case 'price-desc':
+                    return sorted.sort((a, b) => b.price - a.price);
+                case 'name-asc':
+                    return sorted.sort((a, b) => a.name.localeCompare(b.name));
+                default:
+                    return sorted;
+            }
+        }
+
+        // Функция обновления счётчика корзины
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+
+        // Функция добавления в корзину
+        function addToCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                const product = products.find(p => p.id === productId);
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    img: product.img,
+                    emoji: product.emoji,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('✅ Товар добавлен в корзину!');
+        }
+
+        // Отрисовка товаров
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            
+            const sortedProducts = sortProducts(products, currentSort);
+            
+            grid.innerHTML = sortedProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/${product.img}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display: none;">${product.emoji}</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">${product.price.toLocaleString()} ₽</div>
+                        <p class="product-desc">${product.desc}</p>
+                        <button class="buy-btn" onclick="addToCart(${product.id})">В корзину</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Обработка плейсхолдеров
+            document.querySelectorAll('.product-img').forEach(container => {
+                const img = container.querySelector('img');
+                const placeholder = container.querySelector('.img-placeholder');
+                if (img && placeholder) {
+                    img.onerror = function() {
+                        img.style.display = 'none';
+                        placeholder.style.display = 'flex';
+                    };
+                    img.onload = function() {
+                        placeholder.style.display = 'none';
+                    };
+                }
+            });
+        }
+
+        // Обработчик изменения сортировки
+        const sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function() {
+                currentSort = this.value;
+                renderProducts();
+            });
+        }
+
+        // Запуск
+        renderProducts();
+        updateCartCount();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

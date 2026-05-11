@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Инструкция по уходу за цветами</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .care-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .care-header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .care-container {
+            max-width: 1232px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .care-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .care-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2c1a24;
+            margin-bottom: 16px;
+        }
+
+        .care-hero p {
+            font-size: 18px;
+            color: #5e4a54;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            padding: 40px 0 60px;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(164, 76, 120, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .tip-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #a44c78;
+            margin-bottom: 16px;
+        }
+
+        .tip-text {
+            font-size: 16px;
+            color: #5e4a54;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .tip-text ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .tip-text li {
+            margin-bottom: 8px;
+        }
+
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #a44c78;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .care-hero h1 {
+                font-size: 32px;
+            }
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="care-page">
+
+    <!-- Шапка -->
+    <div class="care-header">
+        <div class="care-container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+                </a>
+                <div class="right-actions">
+                    <a href="index.html" class="back-link">← На главную</a>
+                    <a href="cart.html" class="cart-icon">
+                        🛒
+                        <span id="cartCount" class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="care-container">
+        <div class="care-hero">
+            <h1>📖 Инструкция по уходу за цветами</h1>
+            <p>Советы, чтобы ваши цветы радовали как можно дольше</p>
+        </div>
+
+        <div class="tips-grid">
+            <!-- Совет 1 -->
+            <div class="tip-card">
+                <div class="tip-icon">✂️</div>
+                <h3 class="tip-title">Правильная обрезка</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Обрезайте стебли под углом 45°</li>
+                        <li>Используйте острый нож, не ножницы</li>
+                        <li>Обновляйте срез каждые 2-3 дня</li>
+                        <li>Удаляйте нижние листья, которые будут в воде</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Совет 2 -->
+            <div class="tip-card">
+                <div class="tip-icon">💧</div>
+                <h3 class="tip-title">Вода и температура</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Меняйте воду ежедневно</li>
+                        <li>Используйте отстоянную воду комнатной температуры</li>
+                        <li>Не ставьте цветы рядом с батареей</li>
+                        <li>Избегайте сквозняков и прямых солнечных лучей</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Совет 3 -->
+            <div class="tip-card">
+                <div class="tip-icon">🌿</div>
+                <h3 class="tip-title">Подкормка</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Используйте специальные добавки для цветов</li>
+                        <li>Добавьте сахар (1 ч.л. на литр воды)</li>
+                        <li>Аспирин поможет дольше сохранить свежесть</li>
+                        <li>Не переусердствуйте — следуйте инструкции</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Совет 4 -->
+            <div class="tip-card">
+                <div class="tip-icon">🏺</div>
+                <h3 class="tip-title">Выбор вазы</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Ваза должна быть чистой (мойте с содой)</li>
+                        <li>Подбирайте размер под букет</li>
+                        <li>Широкое горлышко для пышных букетов</li>
+                        <li>Для роз подойдёт высокая узкая ваза</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Совет 5 -->
+            <div class="tip-card">
+                <div class="tip-icon">❄️</div>
+                <h3 class="tip-title">Особые случаи</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Розы: опрыскивайте лепестки</li>
+                        <li>Тюльпаны: заверните в бумагу на ночь</li>
+                        <li>Лилии: удаляйте тычинки</li>
+                        <li>Пионы: любят прохладу</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Совет 6 -->
+            <div class="tip-card">
+                <div class="tip-icon">⚠️</div>
+                <h3 class="tip-title">Чего избегать</h3>
+                <div class="tip-text">
+                    <ul>
+                        <li>Не ставьте рядом с фруктами (этилен ускоряет увядание)</li>
+                        <li>Не используйте медную посуду</li>
+                        <li>Не допускайте попадания воды на бутоны</li>
+                        <li>Не ставьте цветы в холодильник</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

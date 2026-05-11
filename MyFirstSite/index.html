@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Цветочный магазин</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта (header) -->
+    <div class="header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#necessities">Преимущества</a></li>
+                <li><a href="#testimonials">Отзывы</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+       <div class="header-actions">
+    <div class="search-form" id="searchForm">
+        <input type="text" class="search-input" id="searchInput" placeholder="Поиск букетов...">
+        <button class="search-btn" id="searchBtn">🔍</button>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+    <a href="account.html" class="account-btn">Личный кабинет</a>
+    <a href="cart.html" class="cart-btn">
+        🛒
+        <span id="cartCount" class="cart-count">0</span>
+    </a>
+</div>
+    </div>
+</div>
+
+    <!-- Hero-секция: фоновая картинка, текст слева -->
+    <div class="hero-section" style="background-image: url('images/hero-section.png');">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h1>
+                    Flora <span>— это больше, чем просто доставка цветов.</span><br>
+                    Мы создаем моменты радости и тепла, помогаем выразить чувства через красоту букетов и подарков.<br>
+                    <span class="hero-subtitle">Наша миссия — сделать каждую доставку особенной, будь то сюрприз для близкого человека или украшение вашего праздника.</span>
+                </h1>
+                <a href="#necessities" class="order-btn">Сделать заказ</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция "Вы получите все необходимое" (9 карточек) -->
+    <section class="necessities-section" id="necessities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Вы получите все необходимое</h2>
+                <p class="section-subtitle">Забота о каждой детали вашего букета и подарка</p>
+            </div>
+            <div class="cards-grid">
+                <!-- Карточка 1 -->
+                <a href="catalog.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-1.jpg" alt="Свежайшие букеты" onerror="this.style.display='none'">
+        <div class="img-placeholder">🌹</div>
+    </div>
+    <h3>Свежайшие букеты</h3>
+    <p>Цветы срезаны утром, доставка в день заказа.</p>
+</a>
+                <!-- Карточка 2 -->
+                <a href="catalog-sinew.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-2.jpg" alt="Букеты из синельной проволоки" onerror="this.style.display='none'">
+        <div class="img-placeholder">✨</div>
+    </div>
+    <h3>Букеты из Синельной проволоки</h3>
+    <p>Букеты из пушистой магии - тепло пожеланий в каждом лепеске.</p>
+</a>
+                <!-- Карточка 3 -->
+                <a href="catalog-sweet.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-3.jpg" alt="Сладкие букеты" onerror="this.style.display='none'">
+        <div class="img-placeholder">🍬</div>
+    </div>
+    <h3>Сладкие букеты</h3>
+    <p>Сладкое - для настроения.</p>
+</a>
+                <!-- Карточка 4 -->
+                <a href="catalog-vases.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-4.jpg" alt="Стильная ваза" onerror="this.style.display='none'">
+        <div class="img-placeholder">🏺</div>
+    </div>
+    <h3>Стильная ваза</h3>
+    <p>Подарок к букету — продлит жизнь цветов.</p>
+</a>
+                <!-- Карточка 5 -->
+                <a href="catalog-cards.html" class="necessity-card" style="text-decoration: none; display: block;">
+                    <div class="card-img">
+                        <img src="images/icon-5.jpg" alt="Авторские открытки" onerror="this.style.display='none'">
+                        <div class="img-placeholder">💌</div>
+                    </div>
+                    <h3>Авторские открытки</h3>
+                    <p>Тёплые слова для ваших близких.</p>
+                </a>
+                <!-- Карточка 6 -->
+               <a href="care-guide.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-6.jpg" alt="Инструкция по уходу" onerror="this.style.display='none'">
+        <div class="img-placeholder">📖</div>
+    </div>
+    <h3>Инструкция по уходу</h3>
+    <p>Советы, чтобы цветы радовали неделями.</p>
+</a>
+                <!-- Карточка 7 -->
+                <a href="delivery.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-7.jpg" alt="Бесплатная доставка" onerror="this.style.display='none'">
+        <div class="img-placeholder">🚚</div>
+    </div>
+    <h3>Бесплатная доставка</h3>
+    <p>При заказе от 4000₽ по городу.</p>
+</a>
+                <!-- Карточка 8 -->
+                <a href="guarantee.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-8.jpg" alt="Гарантия свежести" onerror="this.style.display='none'">
+        <div class="img-placeholder">✅</div>
+    </div>
+    <h3>Гарантия свежести</h3>
+    <p>Или вернём деньги, если букет завял.</p>
+</a>
+                <!-- Карточка 9 -->
+                <a href="consultation.html" class="necessity-card" style="text-decoration: none; display: block;">
+    <div class="card-img">
+        <img src="images/icon-9.jpg" alt="Консультация флориста" onerror="this.style.display='none'">
+        <div class="img-placeholder">💬</div>
+    </div>
+    <h3>Консультация флориста</h3>
+    <p>Поможем составить или подобрать идеальный букет.</p>
+</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с отзывами (слайдер) -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Отзывы наших клиентов</h2>
+                <p>Реальные истории, которые вдохновляют</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <button class="slider-btn prev-btn" aria-label="Предыдущий отзыв">&#10094;</button>
+                <div class="slider-container">
+                    <div class="slider-track">
+                        <div class="testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="images/client-1.jpg" alt="Анна" onerror="this.style.display='none'">
+                                <div class="avatar-placeholder">👩</div>
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">Заказывала букет для мамы на юбилей — цветы свежайшие, доставили точно в указанное время. Отдельное спасибо за открытку с моими словами! Очень душевно.</p>
+                                <div class="client-info">
+                                    <h4>Анна К.</h4>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="images/client-2.jpg" alt="Дмитрий" onerror="this.style.display='none'">
+                                <div class="avatar-placeholder">👨</div>
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">Заказывал композицию для предложения — флористы учли все пожелания, создали невероятно красивый букет. Девушка была в восторге, спасибо Flora!</p>
+                                <div class="client-info">
+                                    <h4>Дмитрий С.</h4>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="images/client-3.jpg" alt="Елена" onerror="this.style.display='none'">
+                                <div class="avatar-placeholder">👩</div>
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">Регулярно заказываю здесь цветы в офис. Всегда свежие, упаковка стильная, курьеры вежливые. Рекомендую как надёжный сервис!</p>
+                                <div class="client-info">
+                                    <h4>Елена В.</h4>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="images/client-4.jpg" alt="Мария" onerror="this.style.display='none'">
+                                <div class="avatar-placeholder">👩</div>
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">Красивая подача, комплимент от магазина — маленький пакетик с лепестками роз. Очень трогательно. Обязательно закажу ещё!</p>
+                                <div class="client-info">
+                                    <h4>Мария П.</h4>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next-btn" aria-label="Следующий отзыв">&#10095;</button>
+            </div>
+            <div class="slider-dots"></div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">Flora</div>
+                <p class="footer-tagline">Создаём моменты счастья с 2018 года</p>
+                <div class="social-links">
+                    <a href="#">📷 Instagram</a>
+                    <a href="#">📘 VK</a>
+                    <a href="#">✈️ Telegram</a>
+                </div>
+            </div>
+            <div class="footer-col">
+    <h4>Магазин</h4>
+    <ul>
+        <li><a href="catalog.html">🌹 Каталог букетов</a></li>
+        <li><a href="catalog-sweet.html">🍬 Подарочные наборы</a></li>
+        <li><a href="mono.html">🌷 Монобукеты</a></li>
+        <li><a href="akcii.html">🏷️ Акции</a></li>
+    </ul>
+</div>
+            <div class="footer-col">
+    <h4>Помощь</h4>
+    <ul>
+        <li><a href="delivery-payment.html">🚚 Доставка и оплата</a></li>
+        <li><a href="return.html">🔄 Возврат</a></li>
+        <li><a href="faq.html">❓ FAQ</a></li>
+        <li><a href="contacts.html">📞 Контакты</a></li>
+    </ul>
+</div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul class="contact-list">
+                    <li>📞 +7 (999) 123-45-67</li>
+                    <li>✉️ hello@flora.ru</li>
+                    <li>📍 Москва, ул. Цветочная, 10</li>
+                </ul>
+                <div class="work-time">Ежедневно 9:00 – 21:00</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Цветочный магазин Flora. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>

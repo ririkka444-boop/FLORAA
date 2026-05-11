@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Акции</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .akcii-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        .akcii-container {
+            max-width: 1232px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .akcii-title {
+            text-align: center;
+            font-size: 48px;
+            color: #2c1a24;
+            margin-bottom: 40px;
+        }
+        .akcii-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .akcii-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .akcii-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(164, 76, 120, 0.15);
+        }
+        .akcii-icon {
+            font-size: 64px;
+        }
+        .akcii-card h3 {
+            font-size: 28px;
+            color: #a44c78;
+            margin: 15px 0 10px;
+        }
+        .akcii-card p {
+            color: #5e4a54;
+            margin-bottom: 20px;
+        }
+        .akcii-btn {
+            background: #d99bb4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .akcii-btn:hover {
+            background: #a44c78;
+            transform: scale(1.02);
+        }
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #a44c78;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+            padding: 0 20px;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+        }
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .akcii-title {
+                font-size: 32px;
+            }
+            .akcii-card h3 {
+                font-size: 22px;
+            }
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="akcii-page">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+        </a>
+        <div class="right-actions">
+            <a href="index.html" class="back-link">← На главную</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="akcii-container">
+        <h1 class="akcii-title">🏷️ Наши акции</h1>
+        <div class="akcii-grid">
+            <div class="akcii-card">
+                <div class="akcii-icon">🎁</div>
+                <h3>Скидка 20% на первый заказ</h3>
+                <p>Для новых клиентов по промокоду FLORA20</p>
+                <button class="akcii-btn" onclick="copyPromoCode()">Скопировать промокод</button>
+            </div>
+            <div class="akcii-card">
+                <div class="akcii-icon">🚚</div>
+                <h3>Бесплатная доставка</h3>
+                <p>При заказе от 4000 ₽ — доставка бесплатно</p>
+                <button class="akcii-btn" onclick="alert('Акция действует на все заказы от 4000₽')">Подробнее</button>
+            </div>
+            <div class="akcii-card">
+                <div class="akcii-icon">💐</div>
+                <h3>Букет в подарок</h3>
+                <p>При заказе от 5000 ₽ — монобукет в подарок</p>
+                <button class="akcii-btn" onclick="alert('Акция действует до конца месяца!')">Подробнее</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Копирование промокода
+        function copyPromoCode() {
+            const promo = 'FLORA20';
+            navigator.clipboard.writeText(promo);
+            alert('✅ Промокод FLORA20 скопирован! Используйте его при оформлении заказа.');
+        }
+
+        // Обновление счётчика корзины
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

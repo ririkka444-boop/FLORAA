@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flora — Консультация флориста</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .consult-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .consult-header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .consult-container {
+            max-width: 1232px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .consult-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .consult-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2c1a24;
+            margin-bottom: 16px;
+        }
+
+        .consult-hero p {
+            font-size: 18px;
+            color: #5e4a54;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .consult-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            padding: 20px 0 80px;
+        }
+
+        .info-block {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .info-block h2 {
+            font-size: 28px;
+            color: #2c1a24;
+            margin-bottom: 24px;
+        }
+
+        .info-block h3 {
+            font-size: 20px;
+            color: #a44c78;
+            margin: 24px 0 12px;
+        }
+
+        .info-block p {
+            font-size: 16px;
+            color: #5e4a54;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0e1e8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list .emoji {
+            font-size: 24px;
+        }
+
+        .florist-card {
+            background: linear-gradient(135deg, #f9eef3, #fff5f9);
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .florist-avatar {
+            font-size: 80px;
+            margin-bottom: 16px;
+        }
+
+        .florist-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c1a24;
+        }
+
+        .florist-title {
+            color: #a44c78;
+            margin: 8px 0;
+        }
+
+        .form-block {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-block h2 {
+            font-size: 28px;
+            color: #2c1a24;
+            margin-bottom: 8px;
+        }
+
+        .form-block p {
+            color: #7a6672;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c1a24;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e0d0d8;
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a44c78;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #a44c78;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #8b3d64;
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #a44c78;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .consult-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .consult-hero h1 {
+                font-size: 32px;
+            }
+            .info-block, .form-block {
+                padding: 24px;
+            }
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="consult-page">
+
+    <!-- Шапка -->
+    <div class="consult-header">
+        <div class="consult-container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+                </a>
+                <div class="right-actions">
+                    <a href="index.html" class="back-link">← На главную</a>
+                    <a href="cart.html" class="cart-icon">
+                        🛒
+                        <span id="cartCount" class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="consult-container">
+        <div class="consult-hero">
+            <h1>💬 Консультация флориста</h1>
+            <p>Поможем составить или подобрать идеальный букет</p>
+        </div>
+
+        <div class="consult-content">
+            <!-- Левая колонка: информация -->
+            <div class="info-block">
+                <h2>🌿 Чем мы можем помочь?</h2>
+                <p>Наши опытные флористы помогут вам:</p>
+                <ul class="info-list">
+                    <li><span class="emoji">💐</span> Подобрать букет по вашему бюджету</li>
+                    <li><span class="emoji">🎨</span> Составить индивидуальную композицию</li>
+                    <li><span class="emoji">📏</span> Определиться с размером и формой</li>
+                    <li><span class="emoji">🎁</span> Выбрать упаковку и декор</li>
+                    <li><span class="emoji">💝</span> Подобрать цветы для конкретного события</li>
+                    <li><span class="emoji">🗓️</span> Рассчитать доставку к нужной дате</li>
+                </ul>
+
+                <div class="florist-card">
+                    <div class="florist-avatar">👩‍🌾</div>
+                    <div class="florist-name">Анна</div>
+                    <div class="florist-title">Ведущий флорист Flora</div>
+                    <p style="margin-top: 12px;">"Люблю создавать букеты, которые дарят эмоции. Каждый клиент для меня особенный!"</p>
+                </div>
+            </div>
+
+            <!-- Правая колонка: форма -->
+            <div class="form-block">
+                <h2>📝 Записаться на консультацию</h2>
+                <p>Заполните форму, и мы свяжемся с вами в ближайшее время</p>
+
+                <div id="successMessage" class="success-message">
+                    ✅ Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.
+                </div>
+
+                <form id="consultForm">
+                    <div class="form-group">
+                        <label>Ваше имя *</label>
+                        <input type="text" id="userName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Телефон или Email *</label>
+                        <input type="text" id="userContact" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Удобный способ связи</label>
+                        <select id="contactMethod">
+                            <option value="telegram">Telegram</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="phone">Звонок</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Что хотите обсудить?</label>
+                        <textarea id="consultTopic" rows="3" placeholder="Например: подобрать букет для девушки, бюджет 3000₽, к завтрашнему дню"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Удобное время для связи</label>
+                        <select id="preferTime">
+                            <option value="morning">Утро (10:00 - 12:00)</option>
+                            <option value="day">День (12:00 - 15:00)</option>
+                            <option value="evening">Вечер (15:00 - 18:00)</option>
+                            <option value="any">Любое время</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">📩 Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('consultForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userName = document.getElementById('userName').value;
+            const userContact = document.getElementById('userContact').value;
+            const contactMethod = document.getElementById('contactMethod').value;
+            const consultTopic = document.getElementById('consultTopic').value;
+            const preferTime = document.getElementById('preferTime').value;
+            
+            if (!userName || !userContact) {
+                alert('Пожалуйста, заполните имя и контактные данные!');
+                return;
+            }
+            
+            const requests = JSON.parse(localStorage.getItem('consultRequests')) || [];
+            requests.push({
+                id: Date.now(),
+                userName: userName,
+                userContact: userContact,
+                contactMethod: contactMethod,
+                consultTopic: consultTopic,
+                preferTime: preferTime,
+                date: new Date().toLocaleString()
+            });
+            localStorage.setItem('consultRequests', JSON.stringify(requests));
+            
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

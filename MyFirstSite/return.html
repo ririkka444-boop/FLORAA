@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora — Возврат</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .info-page {
+            background: linear-gradient(135deg, #d99bb4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        .info-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .info-header {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .info-title {
+            text-align: center;
+            font-size: 48px;
+            color: #2c1a24;
+            margin-bottom: 40px;
+        }
+        .info-card {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .info-card h2 {
+            font-size: 28px;
+            color: #a44c78;
+            margin-bottom: 20px;
+        }
+        .info-card p, .info-card li {
+            color: #5e4a54;
+            line-height: 1.6;
+        }
+        .info-card ul {
+            padding-left: 20px;
+        }
+        .back-link {
+            color: #2c1a24;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #a44c78;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2c1a24;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #2c1a24;
+            margin-left: 20px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a44c78;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-actions {
+            display: flex;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .info-title { font-size: 32px; }
+            .info-card { padding: 24px; }
+            .info-card h2 { font-size: 22px; }
+            .info-header {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="info-page">
+    <div class="info-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Flora" class="logo-img"> Flora
+        </a>
+        <div class="right-actions">
+            <a href="index.html" class="back-link">← На главную</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+    <div class="info-container">
+        <h1 class="info-title">🔄 Возврат товара</h1>
+        
+        <div class="info-card">
+            <h2>🌿 Гарантия свежести</h2>
+            <p>Если цветы завяли раньше 7 дней — мы вернём деньги или заменим букет бесплатно.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>📝 Условия возврата</h2>
+            <ul>
+                <li><strong>Срок возврата</strong> — 7 дней с момента получения</li>
+                <li><strong>Как оформить</strong> — напишите на hello@flora.ru или позвоните +7 (999) 123-45-67</li>
+                <li><strong>Что нужно</strong> — фото/видео подтверждение проблемы</li>
+                <li><strong>Срок рассмотрения</strong> — до 24 часов</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h2>💸 Возврат денег</h2>
+            <ul>
+                <li>На карту — от 3 до 10 рабочих дней</li>
+                <li>Наличными — при визите в магазин</li>
+                <li>На счет в приложении — мгновенно</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countElem = document.getElementById('cartCount');
+            if (countElem) countElem.textContent = totalCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>
